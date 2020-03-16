@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="zh-cn" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>ES6+ 笔记 | ZaG-Blog</title><meta name="description" content="ES6+ 笔记"><meta name="keywords" content="JavaScript,ES6"><meta name="author" content="ZaG Cool"><meta name="copyright" content="ZaG Cool"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ES6+ 笔记"><meta name="twitter:description" content="ES6+ 笔记"><meta name="twitter:image" content="http://q78182iho.bkt.clouddn.com/o-56759.jpeg?e=1584358117&amp;token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:gj7B9QGLL413dqCTNdrWhdWDQ1g="><meta property="og:type" content="article"><meta property="og:title" content="ES6+ 笔记"><meta property="og:url" content="http://gza8.com/2019/03/15/%E5%89%8D%E7%AB%AF-2019-03-15-ES6-%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="ZaG-Blog"><meta property="og:description" content="ES6+ 笔记"><meta property="og:image" content="http://q78182iho.bkt.clouddn.com/o-56759.jpeg?e=1584358117&amp;token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:gj7B9QGLL413dqCTNdrWhdWDQ1g="><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = '1'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://gza8.com/2019/03/15/%E5%89%8D%E7%AB%AF-2019-03-15-ES6-%E7%AC%94%E8%AE%B0/"><link rel="next" title="Webpack 笔记整理" href="http://gza8.com/2019/03/02/%E5%89%8D%E7%AB%AF-2019-03-02-webpack%E7%AC%94%E8%AE%B0/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"http://www.gza8.com/","msgToTraditionalChinese":"简","msgToSimplifiedChinese":"繁"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  isHome: false,
+  isPost: true
+  
+}</script><meta name="generator" content="Hexo 4.2.0"></head><body><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">ZaG-Blog</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">43</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">18</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">7</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">Catalog</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#ES6"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">ES6+</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#历史"><span class="toc_mobile_items-number">1.1.</span> <span class="toc_mobile_items-text">历史</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#ES6-语法"><span class="toc_mobile_items-number">1.2.</span> <span class="toc_mobile_items-text">ES6 语法</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#变量"><span class="toc_mobile_items-number">1.2.1.</span> <span class="toc_mobile_items-text">变量</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#箭头函数"><span class="toc_mobile_items-number">1.2.2.</span> <span class="toc_mobile_items-text">箭头函数</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#Rest-Parameter"><span class="toc_mobile_items-number">1.2.3.</span> <span class="toc_mobile_items-text">Rest Parameter</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#函数参数默认值"><span class="toc_mobile_items-number">1.2.4.</span> <span class="toc_mobile_items-text">函数参数默认值</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#解构赋值"><span class="toc_mobile_items-number">1.2.5.</span> <span class="toc_mobile_items-text">解构赋值</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#模版字符串"><span class="toc_mobile_items-number">1.2.6.</span> <span class="toc_mobile_items-text">模版字符串</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#数组的新增的迭代方法"><span class="toc_mobile_items-number">1.2.7.</span> <span class="toc_mobile_items-text">数组的新增的迭代方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#字符串新增的几个方法"><span class="toc_mobile_items-number">1.2.8.</span> <span class="toc_mobile_items-text">字符串新增的几个方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#幂运算符-es7"><span class="toc_mobile_items-number">1.2.9.</span> <span class="toc_mobile_items-text">幂运算符** (es7)</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#模块化（Module）"><span class="toc_mobile_items-number">1.2.10.</span> <span class="toc_mobile_items-text">模块化（Module）</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#对象属性方法简写"><span class="toc_mobile_items-number">1.2.11.</span> <span class="toc_mobile_items-text">对象属性方法简写</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#面向对象"><span class="toc_mobile_items-number">1.2.12.</span> <span class="toc_mobile_items-text">面向对象</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#面向对象继承"><span class="toc_mobile_items-number">1.2.13.</span> <span class="toc_mobile_items-text">面向对象继承</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#Promise"><span class="toc_mobile_items-number">1.2.14.</span> <span class="toc_mobile_items-text">Promise</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#generator-生成器"><span class="toc_mobile_items-number">1.2.15.</span> <span class="toc_mobile_items-text">generator 生成器</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#async-await-es8-异步同步化"><span class="toc_mobile_items-number">1.2.16.</span> <span class="toc_mobile_items-text">async&#x2F; await (es8) 异步同步化</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#Object"><span class="toc_mobile_items-number">1.2.17.</span> <span class="toc_mobile_items-text">Object</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#padStart-amp-amp-padEnd-es8"><span class="toc_mobile_items-number">1.2.18.</span> <span class="toc_mobile_items-text">padStart() &amp;&amp; padEnd() es8</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#对象扩展操作符-es9"><span class="toc_mobile_items-number">1.2.19.</span> <span class="toc_mobile_items-text">对象扩展操作符 (es9)</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-5"><a class="toc_mobile_items-link" href="#String-prototype-trimStart-标准方法-trimLeft-trimEnd-标准方法-trimRight"><span class="toc_mobile_items-number">1.2.19.1.</span> <span class="toc_mobile_items-text">String.prototype.trimStart() 标准方法&#x2F; trimLeft() &#x2F; trimEnd()标准方法 &#x2F; trimRight()</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-5"><a class="toc_mobile_items-link" href="#try-catch"><span class="toc_mobile_items-number">1.2.19.2.</span> <span class="toc_mobile_items-text">try{}catch{}</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-5"><a class="toc_mobile_items-link" href="#globalThis"><span class="toc_mobile_items-number">1.2.19.3.</span> <span class="toc_mobile_items-text">globalThis</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6"><span class="toc-number">1.</span> <span class="toc-text">ES6+</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#历史"><span class="toc-number">1.1.</span> <span class="toc-text">历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6-语法"><span class="toc-number">1.2.</span> <span class="toc-text">ES6 语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#变量"><span class="toc-number">1.2.1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#箭头函数"><span class="toc-number">1.2.2.</span> <span class="toc-text">箭头函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rest-Parameter"><span class="toc-number">1.2.3.</span> <span class="toc-text">Rest Parameter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数参数默认值"><span class="toc-number">1.2.4.</span> <span class="toc-text">函数参数默认值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解构赋值"><span class="toc-number">1.2.5.</span> <span class="toc-text">解构赋值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模版字符串"><span class="toc-number">1.2.6.</span> <span class="toc-text">模版字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组的新增的迭代方法"><span class="toc-number">1.2.7.</span> <span class="toc-text">数组的新增的迭代方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串新增的几个方法"><span class="toc-number">1.2.8.</span> <span class="toc-text">字符串新增的几个方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#幂运算符-es7"><span class="toc-number">1.2.9.</span> <span class="toc-text">幂运算符** (es7)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模块化（Module）"><span class="toc-number">1.2.10.</span> <span class="toc-text">模块化（Module）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象属性方法简写"><span class="toc-number">1.2.11.</span> <span class="toc-text">对象属性方法简写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#面向对象"><span class="toc-number">1.2.12.</span> <span class="toc-text">面向对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#面向对象继承"><span class="toc-number">1.2.13.</span> <span class="toc-text">面向对象继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise"><span class="toc-number">1.2.14.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#generator-生成器"><span class="toc-number">1.2.15.</span> <span class="toc-text">generator 生成器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#async-await-es8-异步同步化"><span class="toc-number">1.2.16.</span> <span class="toc-text">async&#x2F; await (es8) 异步同步化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object"><span class="toc-number">1.2.17.</span> <span class="toc-text">Object</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#padStart-amp-amp-padEnd-es8"><span class="toc-number">1.2.18.</span> <span class="toc-text">padStart() &amp;&amp; padEnd() es8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象扩展操作符-es9"><span class="toc-number">1.2.19.</span> <span class="toc-text">对象扩展操作符 (es9)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#String-prototype-trimStart-标准方法-trimLeft-trimEnd-标准方法-trimRight"><span class="toc-number">1.2.19.1.</span> <span class="toc-text">String.prototype.trimStart() 标准方法&#x2F; trimLeft() &#x2F; trimEnd()标准方法 &#x2F; trimRight()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#try-catch"><span class="toc-number">1.2.19.2.</span> <span class="toc-text">try{}catch{}</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#globalThis"><span class="toc-number">1.2.19.3.</span> <span class="toc-text">globalThis</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(http://q78182iho.bkt.clouddn.com/o-56759.jpeg?e=1584358117&amp;token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:gj7B9QGLL413dqCTNdrWhdWDQ1g=)"><div id="post-info"><div id="post-title"><div class="posttitle">ES6+ 笔记</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Created 2019-03-15<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> Updated 2020-03-16</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/JavaScript/">JavaScript</a></span><div class="post-meta-wordcount"><div class="post-meta-pv-cv"><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>Post View:</span><span id="busuanzi_value_page_pv"></span></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h2 id="ES6"><a href="#ES6" class="headerlink" title="ES6+"></a>ES6+</h2><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><ol>
+<li>ECMAScript 和 JavaScript (ECMA dom bom)</li>
+</ol>
+<blockquote>
+<p> ECMAScript 是一种由 Ecma 国际（前身为欧洲计算机制造商协会）在标准 ECMA-262 中定义的脚本语言规范 jscript action script</p>
+</blockquote>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ECMA是标准，JS是实现</span><br><span class="line">- 类似于HTML5是标准，IE10、Chrome、FF都是实现</span><br><span class="line">- 换句话说，将来也能有其他XXXScript来实现ECMA</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>ECMAScript 简称 ECMA 或者 ES</strong></p>
+<blockquote>
+<p>目前最新版本是 ES6+(ES6/7/8/9/10)</p>
+</blockquote>
+<ul>
+<li>低级浏览器主要支持 ES 3.1</li>
+<li>高级浏览器正在从 ES 5 过渡到 ES6</li>
+</ul>
+<ol start="2">
+<li>历史版本</li>
+</ol>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">时间 ECMA JS 解释  </span><br><span class="line"><span class="number">1996.11</span> ES <span class="number">1.0</span> JS 稳定 Netscape 将 JS 提交给 ECMA 组织，ES 正式出现  </span><br><span class="line"><span class="number">1998.06</span> ES <span class="number">2.0</span> ES2 正式发布  </span><br><span class="line"><span class="number">1999.12</span> ES <span class="number">3.0</span> ES3 被广泛支持  </span><br><span class="line"><span class="number">2007.10</span> ES <span class="number">4.0</span> ES4 过于激进，被废了  </span><br><span class="line"><span class="number">2008.07</span> ES <span class="number">3.1</span> <span class="number">4.0</span> 退化为严重缩水版的 <span class="number">3.1</span> 因为吵得太厉害，所以 ES <span class="number">3.1</span> 代号为 Harmony(和 谐)</span><br><span class="line"><span class="number">2009.12</span> ES <span class="number">5.0</span> ES <span class="number">5.0</span> 正式发布 同时公布了 JavaScript.next 也就是后来的 ES <span class="number">6.0</span></span><br><span class="line"><span class="number">2011.06</span> ES <span class="number">5.1</span> ES <span class="number">5.1</span> 成为了 ISO 国际标准  </span><br><span class="line"><span class="number">2013.03</span> ES <span class="number">6.0</span> ES <span class="number">6.0</span> 草案定稿  </span><br><span class="line"><span class="number">2013.12</span> ES <span class="number">6.0</span> ES <span class="number">6.0</span> 草案发布  </span><br><span class="line"><span class="number">2015.06</span> ES <span class="number">6.0</span> ES <span class="number">6.0</span> 预计发布正式版 JavaScript.next 开始指向 ES <span class="number">7.0</span></span><br><span class="line"></span><br><span class="line">ES6(ES2015)——IE10+、Chrome、FireFox、移动端、NodeJS （支持程度不一）</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><strong>扩展： 对于高级语法可以使用 babel 进行预转换 （后续在 webpack 中会讲)</strong></p>
+<p>扩展</p>
+<pre><code>TC39推动JavaScript发展的委员会
+每一项新特性最终要进入到ECMAScript规范里，需要经历5个阶段
+Stage 0: 任何成员或者贡献者 都可以提交的想法
+Stage 1: 作为一个正式的提案
+Stage 2：规范化的第一个版本 以后大概率会成为标准
+Stage 3: 进一步完善提案细节
+Stage 4：正式的标准 finish</code></pre><hr>
+<h3 id="ES6-语法"><a href="#ES6-语法" class="headerlink" title="ES6 语法"></a>ES6 语法</h3><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span></span><br><span class="line"><span class="number">1</span> 可以重复声明</span><br><span class="line"><span class="number">2</span> 无法限制修改</span><br><span class="line"><span class="number">3</span> 没有块级作用域</span><br><span class="line"><span class="number">4</span> 变量提升</span><br><span class="line"><span class="number">5</span> 支持全局挂载</span><br><span class="line"><span class="number">6</span> 只声明不赋值</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> 不能重复声明变量  可以重新赋值  有块级作用域  没有变量提升 不支持全局挂载 可以只声明不初始化</span><br><span class="line"><span class="keyword">const</span> 不能重复声明变量  不可以重新赋值  有块级作用域  没有变量提升 不支持全局挂载 不能只声明不初始化</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>块级作用域解决索引的问题</p>
+</blockquote>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><blockquote>
+<p> 并且没有自己的 this，arguments，super</p>
+</blockquote>
+<pre><code>函数--箭头函数
+function 名字(){
+
+}
+
+()=&gt;{
+
+}
+
+1.如果只有一个参数，()可以省
+2.如果只有一个return，{}可以省
+
+// 1 简化 window.onload
+
+// 2 普通函数的简化
+
+// 3 sort排序方法的简化</code></pre><h4 id="Rest-Parameter"><a href="#Rest-Parameter" class="headerlink" title="Rest Parameter"></a>Rest Parameter</h4><pre><code>扩展运算符：
+作用：参数扩展/数组展开  收集参数  展开参数
+// 1 函数参数的扩展 收集剩余参数 ...args
+
+// 2 函数传参的展开 实际参数的传入 ...arr
+
+// 3  利用rest参数 多个数组的合并
+
+// 4 注意事项 let a = ...arr;
+
+// 5 函数嵌套调用</code></pre><h4 id="函数参数默认值"><a href="#函数参数默认值" class="headerlink" title="函数参数默认值"></a>函数参数默认值</h4><pre><code>function func (data) {
+    var data = data || &apos;&apos;
+}
+
+func(0)
+func(false)
+// ===== 改进</code></pre><h4 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h4><blockquote>
+<p>解构赋值： 1.左右两边结构必须一样 2.声明和赋值不能分开(必须在一句话里完成)</p>
+</blockquote>
+<pre><code>// 1 数组的解构赋值
+
+// 2 对象解构赋值
+
+// 3 复杂数据解构  解构粒度
+
+// 4 注意事项说明</code></pre><h4 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h4><blockquote>
+<p>传统字符串拼接的时候 要注意 + 号以及 引号的位置 ， 换行问题</p>
+</blockquote>
+<blockquote>
+<p>模版字符串``, ${变量名}</p>
+</blockquote>
+<pre><code>const name = &apos;尼古拉斯赵四&apos;
+const age = 24
+const info = `My name is ${name},
+I am ${age}`</code></pre><h4 id="数组的新增的迭代方法"><a href="#数组的新增的迭代方法" class="headerlink" title="数组的新增的迭代方法"></a>数组的新增的迭代方法</h4><blockquote>
+<p>迭代： 通俗叫法 遍历 循环 （内部对可迭代对象进行迭代 迭代器（生成器） next “hello” [“1”,’3’,’5’] next() 对象 for in for of）</p>
+</blockquote>
+<pre><code>map 映射
+// map 数组每个元素乘2
+// map 数组分数映射是否及格
+
+filter  过滤
+// filter 过滤3的倍数
+
+forEach 迭代遍历
+// 过滤信息的价格大于10000
+
+reduce  汇总
+// 汇总求和
+
+// forEach的循环
+
+find  查找  返回查找的第一个匹配项
+findIndex 查找到第一个匹配项的索引
+
+some()  只要有一个为真 则结果为真
+
+every() 所有结果都为真 则结果为真
+
+Array.from:转换具有Iterator接口的数据结构为真正数组，返回新数组
+// Array.from(&apos;foo&apos;) // [&quot;f&quot;,&quot;o&quot;, &quot;o&quot;]
+// Array.from([1,2,3], x=&gt;x*2) // [2,4,6]
+
+Array.of()转换一组值为真正数组，返回新数组
+// Array.of(7)       // [7]
+// Array.of(1, 2, 3) // [1, 2, 3]
+
+Array.prototype.keys()：返回以索引值为遍历器的对象
+// arr1 = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]
+Array.prototype.values()：返回以属性值为遍历器的对象
+
+Array.prototype.entries()：返回以索引值和属性值为遍历器的对象
+// const array1 = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]
+// const iterator = array1.entries()</code></pre><h4 id="字符串新增的几个方法"><a href="#字符串新增的几个方法" class="headerlink" title="字符串新增的几个方法"></a>字符串新增的几个方法</h4><pre><code>includes(content)  （es7语法）
+// 用来检测是否包含指定的内容，如果包含，则返回true，否则返回false
+const array1 = [1, 2, 3]
+const pets = [&apos;cat&apos;, &apos;dog&apos;, &apos;bat&apos;]
+
+startsWith(content)
+// 用来检测是否以指定的内容开头，如果是，返回true，否则返回false
+
+endsWidth(content)
+// 用来检测是否以指定的内容结束，如果是，返回true，否则返回false
+
+repeat(times);
+// 将字符串重复指定的次数并返回
+
+练习：
+// 判断图片类型
+
+// 判断协议</code></pre><h4 id="幂运算符-es7"><a href="#幂运算符-es7" class="headerlink" title="幂运算符** (es7)"></a>幂运算符** (es7)</h4><blockquote>
+<p>幂运算符**，具有与 Math.pow()一样的功能，代码如下：</p>
+</blockquote>
+<pre><code>console.log(2**10) // 1024
+console.log(Math.pow(2, 10)) // 1024</code></pre><h4 id="模块化（Module）"><a href="#模块化（Module）" class="headerlink" title="模块化（Module）"></a>模块化（Module）</h4><p><strong>在 ES6 之前，JS 并没有模块化的概念，有的也只是社区定制的类似 CommonJS 和 AMD 之类的规则。例如基于 CommonJS 的 NodeJS ——— (webpack 中进行讲解)</strong></p>
+<h4 id="对象属性方法简写"><a href="#对象属性方法简写" class="headerlink" title="对象属性方法简写"></a>对象属性方法简写</h4><pre><code>var cat = &apos;mimi&apos;
+var dog = &apos;haha&apos;
+var sayHi = function(){ alert(&quot;wang wang&quot;) }
+var someObject = {
+  cat,
+  dog,
+  sayHi,
+  eating(){
+    alert(&quot;eating...&quot;)
+  }
+}</code></pre><h4 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h4><pre><code>// 传统写法 定义User构造函数  姓名属性 密码属性  显示姓名方法  显示密码方法
+
+// 新式写法  class  constructor</code></pre><h4 id="面向对象继承"><a href="#面向对象继承" class="headerlink" title="面向对象继承"></a>面向对象继承</h4><pre><code>// 传统写法 User ===&gt; VipUser(有自己的level,showLevel)    call/apply
+
+// 新式写法  extends   super()</code></pre><h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h4><blockquote>
+<p>Promise 是 ES6 提供的一种异步解决方案，比回调函数更加清晰明了</p>
+</blockquote>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">单词翻译过来是 承诺的意思 这个承诺在未来会有一个确切的答复，并且该承诺有三种状态，分别是：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>等待中（pending）<span class="number">2.</span>完成了 （resolved）<span class="number">3.</span>拒绝了（rejected）</span><br><span class="line"></span><br><span class="line">这个承诺一旦从等待状态变成为其他状态就永远不能更改状态了，也就是说一旦状态变为 resolved 后，就不能再次改变</span><br></pre></td></tr></table></figure></div>
+
+<pre><code>new Promise((resolve, reject) =&gt; {
+  resolve(&apos;success&apos;)
+  // 无效
+  reject(&apos;reject&apos;)
+})</code></pre><p><strong>当我们调用构造函数 Promise 的时候 构造函数内部代码会立即执行</strong></p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'new Promise'</span>)</span><br><span class="line">  resolve(<span class="string">'success'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'finifsh'</span>)</span><br><span class="line"><span class="comment">// new Promise -&gt; finifsh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Promise 实现了链式调用，也就是说每次调用 then 之后返回的都是一个 Promise，并且是一个全新的 Promise，原因也是因为状态不可变。如果你在 then 中 使用了 return，那么 return 的值会被 Promise.resolve() 包装</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">  resolve(<span class="number">1</span>) <span class="comment">//  请求的省</span></span><br><span class="line">&#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res) <span class="comment">// =&gt; 1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> <span class="comment">// 包装成 Promise.resolve(2) // 市</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res) <span class="comment">// =&gt; 2</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>()</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span>=&gt;</span>res)</span><br><span class="line"></span><br><span class="line">ajax(url, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 处理逻辑</span></span><br><span class="line">    ajax(url1, () =&gt; &#123;</span><br><span class="line">        <span class="comment">// 处理逻辑</span></span><br><span class="line">        ajax(url2, () =&gt; &#123;</span><br><span class="line">            <span class="comment">// 处理逻辑</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 经过promise的改写：</span></span><br><span class="line">ajax(url)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(res)</span><br><span class="line">      <span class="keyword">return</span> ajax(url1)</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(res)</span><br><span class="line">      <span class="keyword">return</span> ajax(url2)</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1 图片加载 promise的处理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 ajax的promise的处理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3 简单模拟实现Promise</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h4 id="generator-生成器"><a href="#generator-生成器" class="headerlink" title="generator 生成器"></a>generator 生成器</h4><h4 id="async-await-es8-异步同步化"><a href="#async-await-es8-异步同步化" class="headerlink" title="async/ await (es8) 异步同步化"></a>async/ await (es8) 异步同步化</h4><p>虽然 Promise 可以解决回调地狱的问题，但是链式调用太多，则会变成另一种形式的回调地狱 —— 面条地狱，所以在 ES8 里则出现了 Promise 的语法糖 async/await，专门解决这个问题。</p>
+<pre><code>async ()=&gt;{
+  let data1 = await ajax(url1);
+  // data1逻辑处理
+  let data2 = await ajax(url2);
+  // data2逻辑处理
+  let data3 = await ajax(url3);
+  // data3
+}</code></pre><h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><pre><code>// Object.values()方法返回一个给定对象自身的所有可枚举属性值的数组
+const object1 = {
+      a: &apos;somestring&apos;,
+      b: 42,
+      c: false
+}
+console.log(Object.values(object1)) // [&quot;somestring&quot;, 42, false]
+
+// Object.entries()方法返回一个给定对象自身可枚举属性的键值对数组
+
+for (let [key, value] of Object.entries(object1)) {
+      console.log(`${key}: ${value}`)
+}
+
+// Object.keys() 方法返回一个给定对象的自身可枚举的属性的键名组成的数组</code></pre><h4 id="padStart-amp-amp-padEnd-es8"><a href="#padStart-amp-amp-padEnd-es8" class="headerlink" title="padStart() &amp;&amp; padEnd() es8"></a>padStart() &amp;&amp; padEnd() es8</h4><pre><code>const str1 = &apos;5&apos;
+console.log(str1.padStart(2, &apos;0&apos;)) // &quot;05&quot;
+const str1 = &apos;hello&apos;
+console.log(str1.padEnd(10, &apos;.&apos;)) // &quot;hello.....&quot;
+const str2 = &apos;200&apos;
+console.log(str2.padEnd(5)) // &quot;200  &quot;</code></pre><h4 id="对象扩展操作符-es9"><a href="#对象扩展操作符-es9" class="headerlink" title="对象扩展操作符 (es9)"></a>对象扩展操作符 (es9)</h4><pre><code>var obj1 = { foo: &apos;bar&apos;, x: 42 };
+var obj2 = { foo: &apos;baz&apos;, y: 13 };
+
+var clonedObj = { ...obj1 };
+var mergedObj = { ...obj1, ...obj2 };</code></pre><h5 id="String-prototype-trimStart-标准方法-trimLeft-trimEnd-标准方法-trimRight"><a href="#String-prototype-trimStart-标准方法-trimLeft-trimEnd-标准方法-trimRight" class="headerlink" title="String.prototype.trimStart() 标准方法/ trimLeft() / trimEnd()标准方法 / trimRight()"></a>String.prototype.trimStart() 标准方法/ trimLeft() / trimEnd()标准方法 / trimRight()</h5><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h5 id="try-catch"><a href="#try-catch" class="headerlink" title="try{}catch{}"></a>try{}catch{}</h5><pre><code>try{
+
+}catch{
+
+}
+在以往的版本中，try-catch里catch后面必须带异常参数
+在ES10之后，这个参数却不是必须的，如果用不到，我们可以不用传</code></pre><h5 id="globalThis"><a href="#globalThis" class="headerlink" title="globalThis"></a>globalThis</h5><pre><code>在全局的this 相当于window</code></pre><hr>
+<p>js 的异步运行机制 微任务/宏任务</p>
+<p>图例演示</p>
+<a href="/img/loading.gif" data-fancybox="group" data-caption="JavaScript运行机制" class="fancybox"><img alt="JavaScript运行机制" height="450" data-src="/imgs/js运行机制1.png" src="/img/loading.gif" class="lazyload" title="JavaScript运行机制"></a>
+<a href="/img/loading.gif" data-fancybox="group" data-caption="JavaScript运行机制" class="fancybox"><img alt="JavaScript运行机制" height="450" data-src="/imgs/js运行机制2.png" src="/img/loading.gif" class="lazyload" title="JavaScript运行机制"></a>
+
+<p>面试练习题</p>
+</div></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript    </a><a class="post-meta__tags" href="/tags/ES6/">ES6    </a></div><div class="post_share"><div class="social-share" data-image="http://q78182iho.bkt.clouddn.com/o-56759.jpeg?e=1584358117&amp;token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:gj7B9QGLL413dqCTNdrWhdWDQ1g=" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2019/03/02/%E5%89%8D%E7%AB%AF-2019-03-02-webpack%E7%AC%94%E8%AE%B0/"><img class="next_cover lazyload" data-src="http://q78182iho.bkt.clouddn.com/e-262367.jpg?e=1584298605&amp;token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:J5yqR3eV4lXUqZWsHswggN3BfYU=" onerror="onerror=null;src='/img/404.jpg'"><div class="label">Next Post</div><div class="next_info"><span>Webpack 笔记整理</span></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> Recommend</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2015/04/06/2015-04-06-arrays-similar/" title="判断两个数组是否相似 (arraysSimilar)"><img class="relatedPosts_cover lazyload"data-src="http://q78182iho.bkt.clouddn.com/877971.jpeg?e=1584285397&token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:svQ7BxWLCTQSZoeViIUrX9KEhO4="><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2015-04-06</div><div class="relatedPosts_title">判断两个数组是否相似 (arraysSimilar)</div></div></a></div><div class="relatedPosts_item"><a href="/2015/04/22/2015-04-22-baidu-javascript/" title="JavaScript 基础"><img class="relatedPosts_cover lazyload"data-src="http://q78182iho.bkt.clouddn.com/08-0808.jpg?e=1584257278&token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:WkxzizJugn65umTWuPEjqbAS8Bo=&attname="><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2015-04-22</div><div class="relatedPosts_title">JavaScript 基础</div></div></a></div><div class="relatedPosts_item"><a href="/2015/10/12/2015-10-12-JavaScript-this/" title="JavaScript 中的 this"><img class="relatedPosts_cover lazyload"data-src="http://q78182iho.bkt.clouddn.com/20181113.jpg?e=1584257278&token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:9yrCQScEAmTUqPDL4XjqYxhsG0I=&attname="><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2015-10-12</div><div class="relatedPosts_title">JavaScript 中的 this</div></div></a></div><div class="relatedPosts_item"><a href="/2015/12/20/2015-12-22-jQuery与原生js/" title="抛弃jQuery，拥抱原生JavaScript"><img class="relatedPosts_cover lazyload"data-src="http://q78182iho.bkt.clouddn.com/316093.jpeg?e=1584257278&token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:DQt3L22LsVkmS7anVPyC1tvESXU=&attname="><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2015-12-20</div><div class="relatedPosts_title">抛弃jQuery，拥抱原生JavaScript</div></div></a></div><div class="relatedPosts_item"><a href="/2015/12/28/2015-12-28-jsTools/" title="最佳的 JavaScript 前端框架、库和工具"><img class="relatedPosts_cover lazyload"data-src="http://q78182iho.bkt.clouddn.com/414144.jpeg?e=1584257278&token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:cPVW7z17XvwtBTBPKBiAvjg0ros=&attname="><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2015-12-28</div><div class="relatedPosts_title">最佳的 JavaScript 前端框架、库和工具</div></div></a></div><div class="relatedPosts_item"><a href="/2015/05/20/2015-05-20-scope/" title="JavaScript 作用域和作用域链"><img class="relatedPosts_cover lazyload"data-src="http://q78182iho.bkt.clouddn.com/1179476.jpeg?e=1584257278&token=PEtkS6wXfPIIvWRhdNmawy45lpr8NHmUxTk0LSsj:ptEg16Wnh9Mz7xDASKxcpwAgRw4=&attname="><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2015-05-20</div><div class="relatedPosts_title">JavaScript 作用域和作用域链</div></div></a></div></div><div class="clear_both"></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By ZaG Cool</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="Read Mode"></i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion" target="_self">简</a><i class="darkmode fa fa-moon-o" id="darkmode" title="Dark Mode"></i></div><div id="rightside-config-show"><div id="rightside_config" title="Setting"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="Table of Contents" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="Back to top" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/click_heart.js"></script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
