@@ -88,7 +88,7 @@ console.log(obj3.y); //2
 console.log(obj3.x); //1</code></pre><p>创建函数 <code>Foo</code> 的时候，就会有一个内置的 <code>Foo.prototype</code> 属性，并且这个属性是对象。</p>
 <p>在使用 <code>new Foo();</code> 创建对象实例时。<code>this</code> 会指向一个对象，并且这个对象的原型会指向 <code>Foo.prototype</code> 属性。<code>this.y = 2</code> 给这个对象赋值，并把这个对象返回。把这个对象赋值给 <code>obj3</code>。</p>
 <p><code>y</code> 是 <code>obj3</code> 上的，<code>x</code> 是 <code>obj3</code> 的原型 <code>Foo.prototype</code> 上的。</p>
-<p><a href="/img/loading.gif" data-fancybox="group" data-caption="prototype" class="fancybox"><img alt="prototype" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-prototype.png" src="/img/loading.gif" class="lazyload" title="prototype"></a></p>
+<p><a href="http://7q5cdt.com1.z0.glb.clouddn.com/blog-prototype.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="prototype" class="fancybox"><img alt="prototype" title="prototype" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-prototype.png" src="/img/loading.gif" class="lazyload"></a></p>
 <hr>
 <h3 id="prototype-属性与原型"><a href="#prototype-属性与原型" class="headerlink" title="prototype 属性与原型"></a>prototype 属性与原型</h3><p>prototype 是函数对象上预设的对象属性。</p>
 <p>原型是对象上的原型，通常是构造器的 prototype 属性。</p>
@@ -137,9 +137,9 @@ gao.learn(&apos;JavaScript&apos;); //Gao is learning JavaScript at Class 3123.</
 </ul>
 <hr>
 <h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>gao 对象的原型链：</p>
-<p><a href="/img/loading.gif" data-fancybox="group" data-caption="Object" class="fancybox"><img alt="Object" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-oop-gao.png" src="/img/loading.gif" class="lazyload" title="Object"></a></p>
+<p><a href="http://7q5cdt.com1.z0.glb.clouddn.com/blog-oop-gao.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="Object" class="fancybox"><img alt="Object" title="Object" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-oop-gao.png" src="/img/loading.gif" class="lazyload"></a></p>
 <p>下面通过图形展示原型链：</p>
-<p><a href="/img/loading.gif" data-fancybox="group" data-caption="原型链" class="fancybox"><img alt="原型链" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-%E5%8E%9F%E5%9E%8B%E9%93%BE.png" src="/img/loading.gif" class="lazyload" title="原型链"></a></p>
+<p><a href="http://7q5cdt.com1.z0.glb.clouddn.com/blog-%E5%8E%9F%E5%9E%8B%E9%93%BE.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="原型链" class="fancybox"><img alt="原型链" title="原型链" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-%E5%8E%9F%E5%9E%8B%E9%93%BE.png" src="/img/loading.gif" class="lazyload"></a></p>
 <hr>
 <h4 id="Object-create-null-amp-bind-null"><a href="#Object-create-null-amp-bind-null" class="headerlink" title="Object.create(null) &amp; .bind(null)"></a><code>Object.create(null)</code> &amp; <code>.bind(null)</code></h4><p>这两种算是特例。</p>
 <p><code>Object.create(null)</code> 和 <code>.bind(null)</code> 这两种方式创建出来的对象是没有 <code>prototype</code> 属性的，为 <code>undefined</code>。</p>

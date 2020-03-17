@@ -86,15 +86,15 @@ function activateLightMode(){
 <li>性能</li>
 </ol>
 <p>前端开发一般不需要考虑性能问题，但你想在性能上追求极致的话，一定要知道 jQuery 性能很差。原生 API 选择器相比 jQuery 丰富很多，如 document.getElementsByClassName 性能是 $(classSelector) 的 50 多倍！</p>
-<p><a href="/img/loading.gif" data-fancybox="group" data-caption="638" class="fancybox"><img alt="638" data-src="!--%EF%BF%BC1--" src="/img/loading.gif" class="lazyload" title="638"></a><br>测试链接：<a href="http://jsperf.com/jquery-vs-native-api" target="_blank" rel="noopener">http://jsperf.com/jquery-vs-native-api</a></p>
+<p><a href="!--%EF%BF%BC1--" data-fancybox="group" data-caption="638" class="fancybox"><img alt="638" title="638" data-src="!--%EF%BF%BC1--" src="/img/loading.gif" class="lazyload"></a><br>测试链接：<a href="http://jsperf.com/jquery-vs-native-api" target="_blank" rel="noopener">http://jsperf.com/jquery-vs-native-api</a></p>
 <ol start="5">
 <li>时机成熟</li>
 </ol>
 <p>差的浏览器（IE）已经淘汰的差不多了。<br>If We Didn’t Spend So Much on IE Support, We Could Be Taking Vacations on Mars<br>Christian Alfoni<br>我们的主打产品现在有千万用户，因为我们一直引导用户升级浏览器，上个月统计 IE 9 以下用户只占不到 3%。但为了这 3% 的用户我们前端开发却增加了很多工作量，也限制了我们升级我们的架构，因此放弃支持他们利大于弊。当然这要根据产品来定，比如这是百度统计的国内浏览器占有率，IE8 竟然还有 22%。有些产品可以为了保证用户体验，在旧的浏览器上投入很大成本，甚至做到了极致。其实我觉得产品更应该做的是引导用户升级浏览器。微软也宣布 2016年1月12号停止支持 IE 11 以下浏览器，继续使用旧浏览器就会有安全风险，我们更应该主动引导，只要产品有足够吸引力，大部分用户升级并不困难。</p>
-<p><a href="/img/loading.gif" data-fancybox="group" data-caption="639" class="fancybox"><img alt="639" data-src="!--%EF%BF%BC2--" src="/img/loading.gif" class="lazyload" title="639"></a> </p>
+<p><a href="!--%EF%BF%BC2--" data-fancybox="group" data-caption="639" class="fancybox"><img alt="639" title="639" data-src="!--%EF%BF%BC2--" src="/img/loading.gif" class="lazyload"></a> </p>
 <pre><code>### 数据来源 百度统计
 
-下面是国际上 IE 占有率，IE8 已经跌出前 10，IE 11 比较多，还好支持他们并不难。</code></pre><p><a href="/img/loading.gif" data-fancybox="group" data-caption="640" class="fancybox"><img alt="640" data-src="!--%EF%BF%BC3--" src="/img/loading.gif" class="lazyload" title="640"></a><br>数据来源 W3 Counter</p>
+下面是国际上 IE 占有率，IE8 已经跌出前 10，IE 11 比较多，还好支持他们并不难。</code></pre><p><a href="!--%EF%BF%BC3--" data-fancybox="group" data-caption="640" class="fancybox"><img alt="640" title="640" data-src="!--%EF%BF%BC3--" src="/img/loading.gif" class="lazyload"></a><br>数据来源 W3 Counter</p>
 <h3 id="如何移除-jQuery"><a href="#如何移除-jQuery" class="headerlink" title="如何移除 jQuery"></a>如何移除 jQuery</h3><ol>
 <li><p>替换代码<br>移除 jQuery 可以很顺利，我们把整个过程详细整理了，并开源。<br>打开 <a href="https://github.com/oneuijs/You-Dont-Need-jQuery" target="_blank" rel="noopener">https://github.com/oneuijs/You-Dont-Need-jQuery</a> 对 API 查找替换即可。<br>同时我们简单封装了一些方法：<br>oui-dom-utils 来做选择器和样式相关<br>oui-dom-events 来做 Event，支持命名空间和事件代理<br>刚去了 jQuery 又引了新的库，这不是玩我吗？？其实以上两个库很简单，只是常用方法的简单封装，建议你看一下代码。你当然可以不用。<br>以上的库都用于我们的生产环境，我们会长期维护，保证更新。</p>
 </li>

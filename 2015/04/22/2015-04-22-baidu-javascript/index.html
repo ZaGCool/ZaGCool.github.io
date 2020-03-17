@@ -138,7 +138,7 @@ function activateLightMode(){
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><p>在支持 defer 属性的浏览器上，弹出的顺序则是：”script”、”defer”、”load”。请注意，带有 defer 属性的 <code>&lt;script&gt;</code> 元素不是跟在第二个后面执行，而是在 onload 事件被触发前被调用。</p>
-<p>引用的资料可能写的比较早，在 <a href="http://caniuse.com/#search=defer" target="_blank" rel="noopener">CanIUse</a> 上查了一下 defer 发现大部分浏览器都是支持的。如下图：<br><a href="/img/loading.gif" data-fancybox="group" data-caption="defer的支持情况" class="fancybox"><img alt="defer的支持情况" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/Baidu-Front-end-defer.jpg" src="/img/loading.gif" class="lazyload" title="defer的支持情况"></a></p>
+<p>引用的资料可能写的比较早，在 <a href="http://caniuse.com/#search=defer" target="_blank" rel="noopener">CanIUse</a> 上查了一下 defer 发现大部分浏览器都是支持的。如下图：<br><a href="http://7q5cdt.com1.z0.glb.clouddn.com/Baidu-Front-end-defer.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="defer的支持情况" class="fancybox"><img alt="defer的支持情况" title="defer的支持情况" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/Baidu-Front-end-defer.jpg" src="/img/loading.gif" class="lazyload"></a></p>
 <p>HTML 5 为 <code>&lt;script&gt;</code> 标签定义了一个新的扩展属性：async。它的作用和 defer 一样，能够异步地加载和执行脚本，不因为加载脚本而阻塞页面的加载。但是有一点需要注意，在有 async 的情况下，JavaScript 脚本一旦下载好了就会执行，所以很有可能不是按照原本的顺序来执行的。如果 JavaScript 脚本前后有依赖性，使用 async 就很有可能出现错误。</p>
 <p>IE8,9不支持 <code>async</code></p>
 <ul>

@@ -87,7 +87,7 @@ function activateLightMode(){
 <li>Debug服务端（agent）：一个 HTTP Server，为目标页面与 Debug 客户端建立通信。</li>
 </ul>
 <p>三层结构如下图所示：</p>
-<p><a href="/img/loading.gif" data-fancybox="group" data-caption="http-flow" class="fancybox"><img alt="http-flow" data-src="http://muellerware.org/papers/weinre/images/http-flow.png" src="/img/loading.gif" class="lazyload" title="http-flow"></a></p>
+<p><a href="http://muellerware.org/papers/weinre/images/http-flow.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="http-flow" class="fancybox"><img alt="http-flow" title="http-flow" data-src="http://muellerware.org/papers/weinre/images/http-flow.png" src="/img/loading.gif" class="lazyload"></a></p>
 <p>weinre 的 debug 客户端是基于 Web Inspector 开发，而 Web Inspector 只与以 WebKit 为核心的浏览器兼容，所以 Weinre 的客户端只能用 Chrome 或者 Safari 打开。</p>
 <p><a href="http://people.apache.org/~pmuellr/weinre/docs/latest/Home.html" target="_blank" rel="noopener">官网</a>上也有相应的平台支持说明：</p>
 <ul>
@@ -136,7 +136,7 @@ weinre@2.0.0-pre-I0Z7U9OV C:\Users\haoyang\AppData\Roaming\npm\node_modules\wein
 </ul>
 </li>
 <li><p>启动成功后看到如下界面：</p>
-<p> <a href="/img/loading.gif" data-fancybox="group" data-caption="weinre" class="fancybox"><img alt="weinre" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-weinre.png" src="/img/loading.gif" class="lazyload" title="weinre"></a></p>
+<p> <a href="http://7q5cdt.com1.z0.glb.clouddn.com/blog-weinre.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="weinre" class="fancybox"><img alt="weinre" title="weinre" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-weinre.png" src="/img/loading.gif" class="lazyload"></a></p>
 </li>
 <li><p>给目标页面添加一行脚本</p>
 <p> 可以看到 2.中的 Target Script 说要添加一行脚本到要调试的 web 页面中。</p>
@@ -152,15 +152,15 @@ weinre@2.0.0-pre-I0Z7U9OV C:\Users\haoyang\AppData\Roaming\npm\node_modules\wein
 <p> PC 端访问这个地址：</p>
 <p> debug client user interface:    <a href="http://localhost:8081/client/#anonymous" target="_blank" rel="noopener">http://localhost:8081/client/#anonymous</a></p>
 <p> 此时 target 为 none，如下图：</p>
-<p> <a href="/img/loading.gif" data-fancybox="group" data-caption="target-none" class="fancybox"><img alt="target-none" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-target-none.png" src="/img/loading.gif" class="lazyload" title="target-none"></a></p>
+<p> <a href="http://7q5cdt.com1.z0.glb.clouddn.com/blog-target-none.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="target-none" class="fancybox"><img alt="target-none" title="target-none" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-target-none.png" src="/img/loading.gif" class="lazyload"></a></p>
 <p> 现在我们要用手机访问同一个局域网下的这个目标页面。我们可以把要调试的页面放到这个路径下：</p>
 <pre><code>C:\Users\zag\AppData\Roaming\npm\node_modules\weinre\web</code></pre><p> 通过 <a href="http://192.168.1.107:8081/FILE_NAME" target="_blank" rel="noopener">http://192.168.1.107:8081/FILE_NAME</a> 在手机上访问，就可以看到了。当然前提是同一个局域网。</p>
 <p> 但是这样可能不太灵活，每次都要把目标页面放到指定的目录下。所以我们可以另外开一个服务器。</p>
 <p> 我使用了基于 node.js 的 http-server 工具。将要调试的页面发布。这样我就能通过 ip 地址加端口号在手机上访问到了。</p>
 <p> 我在手机上访问 <a href="http://192.168.1.107:8080" target="_blank" rel="noopener">http://192.168.1.107:8080</a> 打开要调试的页面，此时 debug client user interface 中自动检测到 target。就可以进行调试了！</p>
 <p> 如下图：</p>
-<p> <a href="/img/loading.gif" data-fancybox="group" data-caption="target" class="fancybox"><img alt="target" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-target.png" src="/img/loading.gif" class="lazyload" title="target"></a></p>
-<p> <a href="/img/loading.gif" data-fancybox="group" data-caption="phone" class="fancybox"><img alt="phone" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-1954958440_meitu_2.jpg" src="/img/loading.gif" class="lazyload" title="phone"></a></p>
+<p> <a href="http://7q5cdt.com1.z0.glb.clouddn.com/blog-target.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="target" class="fancybox"><img alt="target" title="target" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-target.png" src="/img/loading.gif" class="lazyload"></a></p>
+<p> <a href="http://7q5cdt.com1.z0.glb.clouddn.com/blog-1954958440_meitu_2.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="phone" class="fancybox"><img alt="phone" title="phone" data-src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-1954958440_meitu_2.jpg" src="/img/loading.gif" class="lazyload"></a></p>
 </li>
 </ol>
 <hr>
